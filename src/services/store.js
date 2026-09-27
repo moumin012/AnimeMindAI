@@ -1,3 +1,5 @@
+import { emptyEducation, mergeEducationProfile } from './educationProfile';
+
 const KEY = 'studentos.mobile.workspace.v1';
 
 export const blankWorkspace = () => ({
@@ -6,16 +8,19 @@ export const blankWorkspace = () => ({
     name: '',
     ageGroup: '',
     language: 'en',
+    studyLanguage: '',
     timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC',
     country: '',
     educationSystem: '',
     stage: '',
     grade: '',
     track: '',
+    education: emptyEducation(),
     subjects: [],
     goals: [],
   },
   onboardingComplete: false,
+  onboarding: { educationComplete: false, deferred: false, version: 2 },
   theme: 'light',
   tasks: [],
   events: [],
@@ -42,7 +47,25 @@ export function loadWorkspace() {
     const raw = window.localStorage.getItem(KEY);
     if (!raw) return blankWorkspace();
     const parsed = JSON.parse(raw);
-    return { ...blankWorkspace(), ...parsed, profile: { ...blankWorkspace().profile, ...parsed.profile } };
+    const base = blankWorkspace();
+    const legacyProfile = { ...base.profile, ...parsed.profile };
+    // Preserve legacy fields while moving education data into its structured shape.
+    // We intentionally do not infer a level from free-text stage values.
+    const profile = mergeEducationProfile(legacyProfile, {
+      ...emptyEducation(),
+      ...(legacyProfile.education || {}),
+      country: legacyProfile.education?.country || legacyProfile.country || null,
+      systemLabel: legacyProfile.education?.systemLabel || legacyProfile.educationSystem || null,
+      grade: legacyProfile.education?.grade || legacyProfile.grade || null,
+      track: legacyProfile.education?.track || legacyProfile.track || null,
+      studyLanguage: legacyProfile.education?.studyLanguage || legacyProfile.studyLanguage || null,
+    });
+    return {
+      ...base,
+      ...parsed,
+      profile,
+      onboarding: { ...base.onboarding, ...(parsed.onboarding || {}), version: 2 },
+    };
   } catch {
     return blankWorkspace();
   }

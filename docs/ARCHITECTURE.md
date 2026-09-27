@@ -37,6 +37,23 @@ All endpoints require a verified bearer token unless noted.
 | Family | `/v1/family-groups`, `/v1/guardian-links` | Explicit invite, approval and narrow sharing scopes. |
 | Privacy | `/v1/me/export`, `DELETE /v1/me` | Audited export/deletion workflows. |
 
+## Progressive education profile
+
+The client stores an education profile using canonical, non-localized values rather than hard-coded country fields:
+
+```text
+country → educationSystem → educationLevel → grade/year → track → specialization
+                                                └─ university: degree, major, year, semester
+                                                └─ vocational: program, specialization, year
+                                                └─ self-learning: selected interests
+```
+
+`education_level` values are `early_childhood`, `primary`, `middle`, `high`, `university`, `vocational`, `adult`, `self_learning`, and `other`. A user may leave optional values `null`; no service is permitted to infer a country, curriculum, grade, track, major, or subject. The profile includes a separate `studyLanguage`, which is never inferred from app UI language.
+
+At the API layer, expose small cached option queries (`/v1/education/countries`, `/systems?country=`, `/levels`, `/grades`, `/tracks`) rather than downloading a global curriculum dataset at first login. Only verified curriculum versions may return recommended subjects. Until then return `official_source_unavailable`.
+
+On an education-profile change, retain a versioned education-history record and preserve existing tasks, sessions, subjects, and learning history. The API may propose an explicit subject/curriculum update but must never delete data as a side effect.
+
 ## Data ownership and authorization
 
 Use opaque UUIDs, row-level authorization keyed by `user_id`, rate limits, security-event audit logs, and object storage access through short-lived scoped URLs. Guardian sharing is opt-in and must be scoped to aggregate study statistics; conversations, notes, uploads, and private answers are denied by default.

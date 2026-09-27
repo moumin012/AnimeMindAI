@@ -11,7 +11,8 @@ npm start
 
 ## What works locally
 
-- Onboarding, profile preferences, schedules, tasks, subjects, study timer, emergency stop, recall cards, study plans, goals, notifications preferences, theme, RTL, export, and deletion persist in the device's local storage.
+- A progressive, resumable onboarding asks for a display name, country, education level, and only the following education question that applies. It supports school, university, vocational, adult, self-learning, and other paths; optional profile preferences can be skipped.
+- Onboarding, structured education profile, profile preferences, schedules, tasks, subjects, study timer, emergency stop, recall cards, study plans, goals, notifications preferences, theme, RTL, export, and deletion persist in the device's local storage.
 - The study timer records only sessions the student actually starts and completes/interupts.
 - Planning recommendations are deterministic and explain their inputs. They are not represented as AI output.
 - Notification permission is requested only after the student presses **Allow**.
