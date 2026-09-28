@@ -1,0 +1,87 @@
+{
+  "name": "StudentOS",
+  "short_name": "StudentOS",
+  "description": "منصة تعليمية ذكية لطلاب وأساتذة التعليم الثانوي في الجزائر - خطط. ادرس. ركّز. تذكّر. تطوّر.",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
+  "orientation": "any",
+  "theme_color": "#0f172a",
+  "background_color": "#0b1120",
+  "categories": ["education", "productivity"],
+  "icons": [
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/pwa-64x64.png",
+      "sizes": "64x64",
+      "type": "image/png"
+    },
+    {
+      "src": "/pwa-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/maskable-icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/pwa-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/maskable-icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "غرفة التركيز (Focus Room)",
+      "short_name": "التركيز",
+      "description": "بدء جلسة مذاكرة بومودورو مع أصوات التركيز الهادئة",
+      "url": "/?tab=focus-study",
+      "icons": [{ "src": "/pwa-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "المساعد الذكي (AI Tutor)",
+      "short_name": "AI Tutor",
+      "description": "طرح الأسئلة وحل تمارين المنهاج الثانوي الجزائري",
+      "url": "/?tab=ai-tutor",
+      "icons": [{ "src": "/pwa-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "خريطة المعرفة (Knowledge Map)",
+      "short_name": "المعرفة",
+      "description": "استعراض شجرة المفاهيم المتقنة والمحتاجة لمراجعة",
+      "url": "/?tab=knowledge-map",
+      "icons": [{ "src": "/pwa-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "الجدول الذكي (Scheduler)",
+      "short_name": "الجدول",
+      "description": "تنظيم الحصص الأسبوعية والمذاكرة والصلاة",
+      "url": "/?tab=scheduler",
+      "icons": [{ "src": "/pwa-192x192.png", "sizes": "192x192" }]
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1ea150;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0d6932;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#38bdf8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0284c7;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- Background Rounded Shield / Icon -->
+  <rect x="20" y="20" width="160" height="160" rx="36" fill="url(#grad)" />
+  
+  <!-- Modern Graduation Cap + Brain/Book Symbol -->
+  <path d="M100 48 L155 72 L100 96 L45 72 Z" fill="#ffffff" />
+  <path d="M150 78 L150 115 C150 120 145 125 140 125 C135 125 130 120 130 115 L130 87" stroke="#ffffff" stroke-width="4" stroke-linecap="round" fill="none" />
+  <circle cx="140" cy="130" r="5" fill="#f59e0b" />
+  
+  <!-- Inner Open Book / Tech Core -->
+  <path d="M60 106 C72 98 88 100 100 108 C112 100 128 98 140 106 L140 144 C128 136 112 138 100 146 C88 138 72 136 60 144 Z" fill="#ffffff" fill-opacity="0.9" />
+  <line x1="100" y1="108" x2="100" y2="146" stroke="#1ea150" stroke-width="3" />
+  
+  <!-- Orbiting Sparkle / AI Node -->
+  <circle cx="150" cy="50" r="10" fill="#38bdf8" />
+  <circle cx="150" cy="50" r="4" fill="#ffffff" />
+</svg>
