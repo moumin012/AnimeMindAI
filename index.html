@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <title>رسـالتي | Resalti ❤️ — لما يعجز الكلام، خلّي رسالتي تتكلم.</title>
+    <meta
+      name="description"
+      content="اكتب مشاعرك بطريقتك، وسنحوّلها إلى رسالة تستحق أن تُرسل. مساعدك الشخصي لكتابة رسائل صادقة وجميلة."
+    />
+    <meta name="theme-color" content="#8e1131" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E%E2%9D%A4%EF%B8%8F%3C/text%3E%3C/svg%3E" />
+    <script>
+      // Applied before first paint so there is no flash of the wrong theme.
+      (function () {
+        try {
+          var s = JSON.parse(localStorage.getItem('resalti:settings') || '{}');
+          var mode = s.theme || 'system';
+          var dark =
+            mode === 'dark' ||
+            (mode === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+          document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+          if (s.locale) {
+            document.documentElement.lang = s.locale.split('-')[0];
+            document.documentElement.dir = ['ar', 'ar-msa', 'ar-dz', 'ar-fr'].some(function (l) {
+              return s.locale.indexOf(l) === 0;
+            })
+              ? 'rtl'
+              : 'ltr';
+          }
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
